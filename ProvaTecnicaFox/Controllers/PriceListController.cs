@@ -6,24 +6,25 @@ namespace ProvaTecnicaFox.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoomController : Controller
+    public class PriceListController : Controller
     {
         protected readonly SqlContext db;
 
-        public RoomController(SqlContext db)
+        public PriceListController(SqlContext db)
         {
             this.db = db;
         }
 
+
         [HttpGet("[action]")]
-        public IActionResult GetAllRooms()
+        public IActionResult GetAllPriceList()
         {
             try
             {
-                List<RoomModel> rooms = db.Rooms.ToList();
-                if (rooms != null)
+                List<PriceModel> priceLists = db.Prices.ToList();
+                if (priceLists != null)
                 {
-                    return Ok(rooms);
+                    return Ok(priceLists);
                 }
                 else
                 {
@@ -39,14 +40,14 @@ namespace ProvaTecnicaFox.api.Controllers
 
         }
         [HttpGet("[action]")]
-        public IActionResult GetRoomsFromAccomodationId(int accomodationId)
+        public IActionResult GetPriceListFromAccomodationId(int accomodationId)
         {
             try
             {
-                List<RoomModel> rooms = db.Rooms.Where(r => r.AccomodationId.Equals(accomodationId)).ToList();
-                if (rooms != null)
+                PriceModel priceList = db.Accomodations.SingleOrDefault(r => r.Id.Equals(accomodationId)).PriceList;
+                if (priceList != null)
                 {
-                    return Ok(rooms);
+                    return Ok(priceList);
                 }
                 else
                 {
@@ -59,46 +60,29 @@ namespace ProvaTecnicaFox.api.Controllers
                 return StatusCode(500, "InternalServerError");
             }
         }
-
         [HttpPost("[action]")]
-        public IActionResult SetNewRoom([FromBody] RoomModel newRoom)
+        public IActionResult SetNewPriceList([FromBody] PriceModel priceList)
         {
             try
             {
-                db.Rooms.Add(newRoom);
-                db.Accomodations.SingleOrDefault(a => a.Id.Equals(newRoom.AccomodationId)).Rooms.Add(newRoom);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                // si dovrebbe loggare 
-                return StatusCode(500, "InternalServerError");
-            }
-        }
-        [HttpGet("[action]")]
-        public IActionResult DeleteRoom(int id)
-        {
-            try
-            {
-                RoomModel oldRoom = db.Rooms.SingleOrDefault(a => a.Id== id);
-                db.Rooms.Remove(oldRoom);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                // si dovrebbe loggare 
-                return StatusCode(500, "InternalServerError");
-            }
-        }
-        [HttpPost("[action]")]
-        public IActionResult UpdateRoom(int id, [FromBody] RoomModel updatedRoom)
-        {
-            try
-            {
-                RoomModel oldRoom = db.Rooms.SingleOrDefault(a => a.Id.Equals(id));
-                oldRoom = updatedRoom;
+                db.Add(priceList);
                 db.SaveChanges();
-                return Ok("Accomodation set");
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // si dovrebbe loggare 
+                return StatusCode(500, "InternalServerError");
+            }
+        }
+        [HttpPost("[action]")]
+        public IActionResult DeletePriceList(int listId)
+        {
+            try
+            {
+                PriceModel oldprice  = db.Prices.SingleOrDefault(a => a.Id == listId);
+                db.Prices.Remove(oldprice);
+                return Ok();
             }
             catch (Exception ex)
             {

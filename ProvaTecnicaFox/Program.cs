@@ -1,3 +1,4 @@
+using ProvaTecnicaFox.api.Controllers;
 using ProvaTecnicaFox.Core.Context;
 using static ProvaTecnicaFox.Core.Context.SqlContext;
 
@@ -27,6 +28,10 @@ namespace ProvaTecnicaFox
             {
                 services.AddDbContext<SqlContext, SqlLiteContext>();
             }
+
+            builder.Services.AddTransient<AccomodationController>();
+            builder.Services.AddTransient<PriceListController>();
+            builder.Services.AddTransient<RoomController>();
 
             var app = builder.Build();
 

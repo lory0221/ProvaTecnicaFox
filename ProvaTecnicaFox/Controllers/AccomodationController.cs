@@ -56,19 +56,22 @@ namespace ProvaTecnicaFox.api.Controllers
             }
             catch (Exception ex)
             {
+                // si dovrebbe loggare 
                 return StatusCode(500, "InternalServerError");
             }
         }
 
-        [HttpPost("[action]")]
-        public IActionResult SetNewAccomodationNoRoomDefaultPrice([FromBody] string name, string location)
+        [HttpGet("[action]")]
+        public IActionResult SetNewAccomodationNoRoomDefaultPrice(string name, string location)
         {
             try
             {
                 AccomodationModel accomodation = new AccomodationModel()
                 {
                     Name = name,
-                    Location = location
+                    Location = location,
+                    Rooms = { },
+                    PriceList = new PriceModel()
                 };
 
                 db.Accomodations.Add(accomodation);
@@ -77,6 +80,7 @@ namespace ProvaTecnicaFox.api.Controllers
             }
             catch (Exception ex)
             {
+                // si dovrebbe loggare 
                 return StatusCode(500, "InternalServerError");
             }
         }
@@ -92,6 +96,7 @@ namespace ProvaTecnicaFox.api.Controllers
             }
             catch (Exception ex)
             {
+                // si dovrebbe loggare 
                 return StatusCode(500, "InternalServerError");
             }
         }
@@ -102,13 +107,30 @@ namespace ProvaTecnicaFox.api.Controllers
         {
             try
             {
-                AccomodationModel accomodation =  db.Accomodations.SingleOrDefault(a => a.AccomodationId.Equals(id));
+                AccomodationModel accomodation =  db.Accomodations.SingleOrDefault(a => a.Id.Equals(id));
                 accomodation = UpdatedAccomodation;
                 db.SaveChanges();
                 return Ok("Accomodation set");
             }
             catch (Exception ex)
             {
+                // si dovrebbe loggare 
+                return StatusCode(500, "InternalServerError");
+            }
+        }
+        [HttpGet("[action]")]
+        public IActionResult UpdateAccommodationPriceList(int accomodationId, int priceListId )
+        {
+            try
+            {
+                AccomodationModel accomodation = db.Accomodations.SingleOrDefault(a => a.Id.Equals(accomodationId));
+                accomodation.PriceList = db.Prices.SingleOrDefault(p => p.Id.Equals(priceListId));
+                db.SaveChanges();
+                return Ok("Accomodation set");
+            }
+            catch (Exception ex)
+            {
+                // si dovrebbe loggare 
                 return StatusCode(500, "InternalServerError");
             }
         }
@@ -117,15 +139,15 @@ namespace ProvaTecnicaFox.api.Controllers
         {
             try 
             {
-                AccomodationModel oldAccomodation = db.Accomodations.SingleOrDefault(a => a.AccomodationId== id);
+                AccomodationModel oldAccomodation = db.Accomodations.SingleOrDefault(a => a.Id== id);
                 db.Accomodations.Remove(oldAccomodation);
                 return Ok();
             }    
             catch(Exception ex)
             {
+                // si dovrebbe loggare 
                 return StatusCode(500, "InternalServerError");
             }
-
         }
     }
 }

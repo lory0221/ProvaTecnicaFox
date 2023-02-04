@@ -8,7 +8,7 @@ namespace ProvaTecnicaFox.Core.Models
 {
     public class RoomModel
     {
-        public int RoomId { get; set; }
+        public int Id { get; set; }
         public RoomType Type { get; set; }
         public int AccomodationId { get; set; }
         public AccomodationModel Accomodation { get; set; }
