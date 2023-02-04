@@ -1,6 +1,6 @@
 # ProvaTecnicaFox
 
-L'ho sviluppato in locale quindi ho usato sqlLite, sqlServer è già predisposto basta fare il deploy come release e creare una migrazione funzionante.
+L'ho sviluppato in locale quindi ho usato sqlLite, sqlServer è già predisposto basta creare una migrazione funzionante per sql e fare il deploy come release.
 
 Potrebbe esserci qualche problema di integità referenziale.
 
