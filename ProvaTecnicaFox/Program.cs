@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using ProvaTecnicaFox.api.Controllers;
 using ProvaTecnicaFox.Core.Context;
 using static ProvaTecnicaFox.Core.Context.SqlContext;
@@ -21,8 +20,14 @@ namespace ProvaTecnicaFox
             var services = builder.Services;
             var env = builder.Environment;
 
-
-            services.AddDbContext<SqlContext>();
+            if (env.IsProduction())
+            {
+                services.AddDbContext<SqlContext>();
+            }
+            else
+            {
+                services.AddDbContext<SqlContext, SqlLiteContext>();
+            }
 
             builder.Services.AddTransient<AccomodationController>();
             builder.Services.AddTransient<PriceListController>();
@@ -30,15 +35,12 @@ namespace ProvaTecnicaFox
 
             var app = builder.Build();
 
-            using (var scope = app.Services.CreateScope())
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
             {
-                var dataContext = scope.ServiceProvider.GetRequiredService<SqlContext>();
-                dataContext.Database.Migrate();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
-
-            app.UseSwagger();
-            app.UseSwaggerUI();
-            
 
             app.UseHttpsRedirection();
 
