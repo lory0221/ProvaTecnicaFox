@@ -22,7 +22,7 @@ namespace ProvaTecnicaFox.Core.Context
 
             protected override void OnConfiguring(DbContextOptionsBuilder options)
             {
-                options.UseSqlServer(Configuration.GetConnectionString("SqlConnectionString"));
+                options.UseSqlServer("Server=appDb;Initial Catalog=ProvaTecnicaFoxSqlDb;Persist Security Info=False;User ID=sa;Password=Password12!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
 
             protected override void OnModelCreating(ModelBuilder modelBuilder)
