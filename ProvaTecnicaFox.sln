@@ -7,26 +7,33 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvaTecnicaFox.api", "Prov
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProvaTecnicaFox.Core", "ProvaTecnicaFox.Core\ProvaTecnicaFox.Core.csproj", "{5996F92A-6132-4D00-A47C-B0FD74178B20}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1233443D-A4D4-4B46-891C-CDCABA4D4237}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{888823D2-48DA-4678-8294-9F123CFBF90D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		NoVariablesDefault|Any CPU = NoVariablesDefault|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4431BFF2-2461-4367-B6FF-A69E5854F3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4431BFF2-2461-4367-B6FF-A69E5854F3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4431BFF2-2461-4367-B6FF-A69E5854F3DD}.NoVariablesDefault|Any CPU.ActiveCfg = Release|Any CPU
+		{4431BFF2-2461-4367-B6FF-A69E5854F3DD}.NoVariablesDefault|Any CPU.Build.0 = Release|Any CPU
 		{4431BFF2-2461-4367-B6FF-A69E5854F3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4431BFF2-2461-4367-B6FF-A69E5854F3DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5996F92A-6132-4D00-A47C-B0FD74178B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5996F92A-6132-4D00-A47C-B0FD74178B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5996F92A-6132-4D00-A47C-B0FD74178B20}.NoVariablesDefault|Any CPU.ActiveCfg = Release|Any CPU
+		{5996F92A-6132-4D00-A47C-B0FD74178B20}.NoVariablesDefault|Any CPU.Build.0 = Release|Any CPU
 		{5996F92A-6132-4D00-A47C-B0FD74178B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5996F92A-6132-4D00-A47C-B0FD74178B20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1233443D-A4D4-4B46-891C-CDCABA4D4237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1233443D-A4D4-4B46-891C-CDCABA4D4237}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1233443D-A4D4-4B46-891C-CDCABA4D4237}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{1233443D-A4D4-4B46-891C-CDCABA4D4237}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{888823D2-48DA-4678-8294-9F123CFBF90D}.Debug|Any CPU.ActiveCfg = NoVariablesDefault
+		{888823D2-48DA-4678-8294-9F123CFBF90D}.Debug|Any CPU.Build.0 = NoVariablesDefault
+		{888823D2-48DA-4678-8294-9F123CFBF90D}.NoVariablesDefault|Any CPU.ActiveCfg = NoVariablesDefault
+		{888823D2-48DA-4678-8294-9F123CFBF90D}.NoVariablesDefault|Any CPU.Build.0 = NoVariablesDefault
+		{888823D2-48DA-4678-8294-9F123CFBF90D}.Release|Any CPU.ActiveCfg = NoVariablesDefault
+		{888823D2-48DA-4678-8294-9F123CFBF90D}.Release|Any CPU.Build.0 = NoVariablesDefault
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
