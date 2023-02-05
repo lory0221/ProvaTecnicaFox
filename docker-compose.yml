@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+  ProvaTecnicaFoxNic:
+
+services:
+  appDb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports: 
+        - 8002:80
+    environment:
+        - ACCEPT_EULA=Y
+        - MSSQL_SA_PASSWORD=Password12!
+    networks:
+        - ProvaTecnicaFoxNic
+  provatecnicafox.api:
+    container_name: Prova_Tecnica_Fox
+    image: ${DOCKER_REGISTRY-}provatecnicafoxapi
+    build:
+      context: .
+      dockerfile: ProvaTecnicaFox\Dockerfile
+    ports:
+        - 8001:80
+    depends_on:
+        - appDb
+    environment:
+        - DB_HOST=appDb
+        - DB_NAME=ProvaTecnicaFoxSqlDb
+        - DB_SA_PASSWORD=Password12!
+    networks:
+        - ProvaTecnicaFoxNic

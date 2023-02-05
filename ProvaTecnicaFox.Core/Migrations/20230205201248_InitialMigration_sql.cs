@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace ProvaTecnicaFox.Core.Migrations.SqlLiteMigrations
+namespace ProvaTecnicaFox.Core.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigration_sql : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,12 +12,12 @@ namespace ProvaTecnicaFox.Core.Migrations.SqlLiteMigrations
                 name: "Prices",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    SinglePrice = table.Column<float>(type: "REAL", nullable: false),
-                    DoublePrice = table.Column<float>(type: "REAL", nullable: false),
-                    SuitePrice = table.Column<float>(type: "REAL", nullable: false),
-                    DeluxePrice = table.Column<float>(type: "REAL", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SinglePrice = table.Column<float>(type: "real", nullable: false),
+                    DoublePrice = table.Column<float>(type: "real", nullable: false),
+                    SuitePrice = table.Column<float>(type: "real", nullable: false),
+                    DeluxePrice = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,11 +28,11 @@ namespace ProvaTecnicaFox.Core.Migrations.SqlLiteMigrations
                 name: "Accomodations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Location = table.Column<string>(type: "TEXT", nullable: false),
-                    PriceListId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PriceListId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,10 +49,10 @@ namespace ProvaTecnicaFox.Core.Migrations.SqlLiteMigrations
                 name: "Rooms",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Type = table.Column<int>(type: "INTEGER", nullable: false),
-                    AccomodationId = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    AccomodationId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
